@@ -1,0 +1,337 @@
+from Bio import SeqIO
+import numpy as np
+import subprocess
+import os
+
+
+# Testing initial code
+'''
+pathToFastaFile = "../data/REL606.fasta"
+start = 5999
+end = 10000
+
+#empty list to hold target seq
+shortSeq = []
+
+myFasta = SeqIO.parse(pathToFastaFile, "fasta")
+
+for record in myFasta:
+    if record.id == "REL606":
+        shortSeq.append(record[start:end])
+#        print(record.id)
+#        print(record.seq[start:end])
+
+SeqIO.write(shortSeq, "../output/mysubsequence.fasta", "fasta")
+
+
+
+referenceFasta = "../data/REL606.fasta"         
+queryFasta = "../output/mysubsequence.fasta"
+outputFile = "../output/alignment.sam"
+
+command = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFile,
+    referenceFasta,
+    queryFasta,
+]
+
+alignment = subprocess.run(command, capture_output=True, text=True)
+
+'''
+
+
+
+# Testing code continued 
+'''
+pathToFastaFile = "../data/REL606.fasta"
+start = 15300
+end = 16500
+
+#empty list to hold target seq
+shortSeq = []
+
+myFasta = SeqIO.parse(pathToFastaFile, "fasta")
+
+for record in myFasta:
+    if record.id == "REL606":
+        shortSeq.append(record[start:end])
+#        print(record.id)
+#        print(record.seq[start:end])
+
+SeqIO.write(shortSeq, "../output/mysubsequence2.fasta", "fasta")
+
+
+
+referenceFasta = "../data/REL606.fasta"         
+queryFasta = "../output/mysubsequence2.fasta"
+outputFile = "../output/alignment2.sam"
+
+command = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFile,
+    referenceFasta,
+    queryFasta,
+]
+
+alignment = subprocess.run(command, capture_output=True, text=True)
+'''
+
+
+
+# Finding rRNA locations in test-genome-1.fasta
+
+# rrnH
+pathToFastaFilerrnH = "../data/REL606.fasta"
+startrrnH = 226409   # 16S start: 226609 
+endrrnH = 231999   #5S end: 231799
+
+shortSeqrrnH = []
+
+myFastarrnH = SeqIO.parse(pathToFastaFilerrnH, "fasta")
+
+for record in myFastarrnH:
+    if record.id == "REL606":
+        shortSeqrrnH.append(record[startrrnH:endrrnH])
+
+
+SeqIO.write(shortSeqrrnH, "../output/REL606rrnH.fasta", "fasta")
+
+
+
+referenceFastarrnH = "../data/test-genome-1.fasta"    
+queryFastarrnH = "../output/REL606rrnH.fasta"
+outputFilerrnH = "../output/alignmentrrnH.sam"
+
+commandrrnH = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFilerrnH,
+    referenceFastarrnH,
+    queryFastarrnH,
+]
+
+alignmentrrnH = subprocess.run(commandrrnH, capture_output=True, text=True, check=True)
+
+
+
+
+
+# rrnG
+pathToFastaFilerrnG = "../data/REL606.fasta"
+startrrnG = 2647879   # 16S start: 2651023.  2650823
+endrrnG = 2650823   #5S end: 2647679.  2647879
+
+shortSeqrrnG = []
+
+myFastarrnG = SeqIO.parse(pathToFastaFilerrnG, "fasta")
+
+for record in myFastarrnG:
+    if record.id == "REL606":
+        shortSeqrrnG.append(record[startrrnG:endrrnG])
+
+
+SeqIO.write(shortSeqrrnG, "../output/REL606rrnG.fasta", "fasta")
+
+
+
+referenceFastarrnG = "../data/test-genome-1.fasta"    
+queryFastarrnG = "../output/REL606rrnG.fasta"
+outputFilerrnG = "../output/alignmentrrnG.sam"
+
+commandrrnG = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFilerrnG,
+    referenceFastarrnG,
+    queryFastarrnG,
+]
+
+alignmentrrnG = subprocess.run(commandrrnG, capture_output=True, text=True, check=True)
+
+
+
+
+
+# rrnD
+pathToFastaFilerrnD = "../data/REL606.fasta"
+startrrnD = 3351879   # 16S start: 3355126.  3354926
+endrrnD = 3354926   #5S end: 3351679.  3351879
+
+shortSeqrrnD = []
+
+myFastarrnD = SeqIO.parse(pathToFastaFilerrnD, "fasta")
+
+for record in myFastarrnD:
+    if record.id == "REL606":
+        shortSeqrrnD.append(record[startrrnD:endrrnD])
+
+
+SeqIO.write(shortSeqrrnD, "../output/REL606rrnD.fasta", "fasta")
+
+
+
+referenceFastarrnD = "../data/test-genome-1.fasta"    
+queryFastarrnD = "../output/REL606rrnD.fasta"
+outputFilerrnD = "../output/alignmentrrnD.sam"
+
+commandrrnD = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFilerrnD,
+    referenceFastarrnD,
+    queryFastarrnD,
+]
+
+alignmentrrnD = subprocess.run(commandrrnD, capture_output=True, text=True, check=True)
+
+
+
+
+
+# rrnC
+pathToFastaFilerrnC = "../data/REL606.fasta"
+startrrnC = 3903815   # 16S start: 3903615
+endrrnC = 3908419   #5S end: 3908619
+
+shortSeqrrnC = []
+
+myFastarrnC = SeqIO.parse(pathToFastaFilerrnC, "fasta")
+
+for record in myFastarrnC:
+    if record.id == "REL606":
+        shortSeqrrnC.append(record[startrrnC:endrrnC])
+
+
+SeqIO.write(shortSeqrrnC, "../output/REL606rrnC.fasta", "fasta")
+
+
+
+referenceFastarrnC = "../data/test-genome-1.fasta"    
+queryFastarrnC = "../output/REL606rrnC.fasta"
+outputFilerrnC = "../output/alignmentrrnC.sam"
+
+commandrrnC = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFilerrnC,
+    referenceFastarrnC,
+    queryFastarrnC,
+]
+
+alignmentrrnC = subprocess.run(commandrrnC, capture_output=True, text=True, check=True)
+
+
+
+
+
+# rrnA
+pathToFastaFilerrnA = "../data/REL606.fasta"
+startrrnA = 4013704   # 16S start: 4013904
+endrrnA = 4019301   #5S end: 4019101
+
+shortSeqrrnA = []
+
+myFastarrnA = SeqIO.parse(pathToFastaFilerrnA, "fasta")
+
+for record in myFastarrnA:
+    if record.id == "REL606":
+        shortSeqrrnA.append(record[startrrnA:endrrnA])
+
+
+SeqIO.write(shortSeqrrnA, "../output/REL606rrnA.fasta", "fasta")
+
+
+
+referenceFastarrnA = "../data/test-genome-1.fasta"    
+queryFastarrnA = "../output/REL606rrnA.fasta"
+outputFilerrnA = "../output/alignmentrrnA.sam"
+
+commandrrnA = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFilerrnA,
+    referenceFastarrnA,
+    queryFastarrnA,
+]
+
+alignmentrrnA = subprocess.run(commandrrnA, capture_output=True, text=True, check=True)
+
+
+
+
+
+# rrnB
+pathToFastaFilerrnB = "../data/REL606.fasta"
+startrrnB = 4146320   # 16S start: 4146520
+endrrnB = 4151735   #5S end: 4151535
+
+shortSeqrrnB = []
+
+myFastarrnB = SeqIO.parse(pathToFastaFilerrnB, "fasta")
+
+for record in myFastarrnB:
+    if record.id == "REL606":
+        shortSeqrrnB.append(record[startrrnB:endrrnB])
+
+
+SeqIO.write(shortSeqrrnB, "../output/REL606rrnB.fasta", "fasta")
+
+
+
+referenceFastarrnB = "../data/test-genome-1.fasta"    
+queryFastarrnB = "../output/REL606rrnB.fasta"
+outputFilerrnB = "../output/alignmentrrnB.sam"
+
+commandrrnB = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFilerrnB,
+    referenceFastarrnB,
+    queryFastarrnB,
+]
+
+alignmentrrnB = subprocess.run(commandrrnB, capture_output=True, text=True, check=True)
+
+
+
+
+
+# rrnE
+pathToFastaFilerrnE = "../data/REL606.fasta"
+startrrnE = 4187534   # 16S start: 4187734
+endrrnE = 4193032   #5S end: 4192832
+
+shortSeqrrnE = []
+
+myFastarrnE = SeqIO.parse(pathToFastaFilerrnE, "fasta")
+
+for record in myFastarrnE:
+    if record.id == "REL606":
+        shortSeqrrnE.append(record[startrrnE:endrrnE])
+
+
+SeqIO.write(shortSeqrrnE, "../output/REL606rrnE.fasta", "fasta")
+
+
+
+referenceFastarrnE = "../data/test-genome-1.fasta"    
+queryFastarrnE = "../output/REL606rrnE.fasta"
+outputFilerrnE = "../output/alignmentrrnE.sam"
+
+commandrrnE = [
+    "minimap2",
+    "-ax", "asm5",
+    "-o", outputFilerrnE,
+    referenceFastarrnE,
+    queryFastarrnE,
+]
+
+alignmentrrnE = subprocess.run(commandrrnE, capture_output=True, text=True, check=True)
+
+
+
+
+
